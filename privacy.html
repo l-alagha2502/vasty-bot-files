@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VASTY BOT — PRIVACY POLICY</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET & BASE ─────────────────────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --black:  #000000;
+      --green:  #00FF00;
+      --cyan:   #00FFFF;
+      --white:  #FFFFFF;
+      --border: 5px solid var(--green);
+      --font:   'Space Mono', 'Courier New', monospace;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--black);
+      color: var(--green);
+      font-family: var(--font);
+      font-size: 1rem;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── SCANLINE OVERLAY (Chroma texture) ───────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 0, 0.03) 2px,
+        rgba(0, 255, 0, 0.03) 4px
+      );
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── NAVIGATION ───────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--black);
+      border-bottom: var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-brand {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 1rem 0;
+      text-decoration: none;
+      border: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 1rem 1.4rem;
+      font-family: var(--font);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      color: var(--green);
+      border-left: 5px solid var(--green);
+      transition: background-color 0.1s, color 0.1s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background-color: var(--green);
+      color: var(--black);
+    }
+
+    /* ── HERO BANNER ──────────────────────────────────────────── */
+    .hero {
+      border-bottom: var(--border);
+      padding: 4rem 2rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: 'PP';
+      position: absolute;
+      right: -0.05em;
+      bottom: -0.25em;
+      font-size: clamp(6rem, 20vw, 14rem);
+      font-weight: 700;
+      color: rgba(0, 255, 255, 0.05);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--black);
+      background-color: var(--green);
+      padding: 0.25rem 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.1;
+      letter-spacing: 0.05em;
+      color: var(--green);
+    }
+
+    .hero h1 span {
+      color: var(--cyan);
+    }
+
+    .hero-meta {
+      margin-top: 1.25rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      opacity: 0.8;
+    }
+
+    /* ── MAIN LAYOUT ──────────────────────────────────────────── */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem 6rem;
+    }
+
+    /* ── SECTION CARDS ────────────────────────────────────────── */
+    .section-card {
+      border: var(--border);
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .section-card::before {
+      content: attr(data-index);
+      position: absolute;
+      top: -1px;
+      right: -1px;
+      background-color: var(--cyan);
+      color: var(--black);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 0.2rem 0.6rem;
+      text-transform: uppercase;
+    }
+
+    .section-header {
+      background-color: var(--cyan);
+      color: var(--black);
+      padding: 0.85rem 1.5rem;
+      font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-bottom: 5px solid var(--black);
+    }
+
+    .section-body {
+      padding: 1.5rem;
+      color: var(--white);
+      font-size: 0.92rem;
+    }
+
+    .section-body p {
+      margin-bottom: 1rem;
+    }
+
+    .section-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── LISTS ────────────────────────────────────────────────── */
+    .section-body ul {
+      list-style: none;
+      margin: 0.75rem 0;
+      padding: 0;
+    }
+
+    .section-body ul li {
+      padding: 0.45rem 0 0.45rem 1.5rem;
+      position: relative;
+      border-bottom: 1px solid rgba(0, 255, 255, 0.15);
+    }
+
+    .section-body ul li:last-child {
+      border-bottom: none;
+    }
+
+    .section-body ul li::before {
+      content: '▶';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-size: 0.7rem;
+      top: 0.55rem;
+    }
+
+    /* ── HIGHLIGHT CALLOUT ────────────────────────────────────── */
+    .callout {
+      border: 5px solid var(--green);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      background-color: rgba(0, 255, 0, 0.05);
+      color: var(--green);
+      font-size: 0.88rem;
+    }
+
+    .callout strong {
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── DATA TABLE (for data types) ──────────────────────────── */
+    .data-tag {
+      display: inline-block;
+      border: 2px solid var(--cyan);
+      color: var(--cyan);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.1rem 0.4rem;
+      margin-right: 0.4rem;
+      vertical-align: middle;
+    }
+
+    /* ── FOOTER ───────────────────────────────────────────────── */
+    footer {
+      border-top: var(--border);
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(0, 255, 0, 0.5);
+    }
+
+    footer span strong {
+      color: var(--cyan);
+    }
+
+    /* ── BACK TO TOP ──────────────────────────────────────────── */
+    #back-to-top {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      border: 5px solid var(--cyan);
+      background-color: var(--black);
+      color: var(--cyan);
+      font-family: var(--font);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      transition: background-color 0.1s, color 0.1s;
+      cursor: pointer;
+    }
+
+    #back-to-top:hover {
+      background-color: var(--cyan);
+      color: var(--black);
+    }
+
+    /* ── CHROMA ACCENT LINE ───────────────────────────────────── */
+    .chroma-line {
+      height: 5px;
+      background: linear-gradient(90deg, var(--cyan) 0%, var(--green) 50%, var(--cyan) 100%);
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      nav {
+        padding: 0 1rem;
+      }
+
+      .nav-brand {
+        font-size: 0.9rem;
+      }
+
+      .nav-links a {
+        padding: 1rem 1rem;
+        font-size: 0.75rem;
+      }
+
+      .hero {
+        padding: 2.5rem 1rem 2rem;
+      }
+
+      main {
+        padding: 2rem 1rem 4rem;
+      }
+
+      .section-header {
+        font-size: 0.9rem;
+      }
+
+      .section-body {
+        padding: 1rem;
+        font-size: 0.85rem;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body id="top">
+
+  <!-- CHROMA TOP ACCENT -->
+  <div class="chroma-line"></div>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a class="nav-brand" href="index.html">⚡ VASTY BOT</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Terms of Service</a></li>
+      <li><a href="privacy.html" class="active">Privacy Policy</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <span class="hero-label">Legal Document</span>
+    <h1>Privacy<br /><span>Policy</span></h1>
+    <p class="hero-meta">Last Updated: March 31, 2026 &nbsp;|&nbsp; Vasty Bot &nbsp;|&nbsp; Vast™</p>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <!-- SECTION 1 -->
+    <article class="section-card" data-index="§ 01">
+      <div class="section-header">1. Data Collection</div>
+      <div class="section-body">
+        <p>To function properly, Vasty Bot collects and stores the following data:</p>
+        <ul>
+          <li><span class="data-tag">ID</span> <strong>User &amp; Server IDs:</strong> To track leveling (XP), Sparks, and permissions.</li>
+          <li><span class="data-tag">META</span> <strong>Message Metadata:</strong> To calculate server-wide stats and execute the media-only/counting game logic.</li>
+          <li><span class="data-tag">SPEC</span> <strong>Vast Card Specs:</strong> All 14 data points (social links, PFP, location, etc.) provided during the customization process are stored for manual fulfillment.</li>
+          <li><span class="data-tag">IMG</span> <strong>Attachments:</strong> Images sent in the "Proof of Work" channel are processed to validate economy rewards.</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- SECTION 2 -->
+    <article class="section-card" data-index="§ 02">
+      <div class="section-header">2. How Data is Used</div>
+      <div class="section-body">
+        <p>Data is used strictly to provide the bot's features.</p>
+        <div class="callout">
+          <strong>We do not sell your data.</strong> We do not track your activity outside of the servers where Vasty Bot is present.
+        </div>
+      </div>
+    </article>
+
+    <!-- SECTION 3 -->
+    <article class="section-card" data-index="§ 03">
+      <div class="section-header">3. Data Retention</div>
+      <div class="section-body">
+        <ul>
+          <li><strong>Active Data:</strong> Stored as long as you are active in a server with the bot.</li>
+          <li><strong>Ticket Data:</strong> Support ticket transcripts are stored for 30 days for quality assurance and then deleted.</li>
+          <li><strong>Deletion:</strong> You may request a complete wipe of your personal data (XP, Sparks, and Card Specs) by opening a support ticket via the bot.</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- SECTION 4 -->
+    <article class="section-card" data-index="§ 04">
+      <div class="section-header">4. Security</div>
+      <div class="section-body">
+        <p>Your data is stored in a secured MongoDB database. Only the Vast™ Founder and authorized developers have access to the backend systems.</p>
+      </div>
+    </article>
+
+    <!-- SECTION 5 -->
+    <article class="section-card" data-index="§ 05">
+      <div class="section-header">5. Governing Law</div>
+      <div class="section-body">
+        <p>These policies are governed by the laws of the State of Qatar, where Vast™ is headquartered.</p>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 <strong>Vast™</strong> — All rights reserved.</span>
+    <a href="#top" id="back-to-top">↑ Back to Top</a>
+  </footer>
+
+  <!-- CHROMA BOTTOM ACCENT -->
+  <div class="chroma-line"></div>
+
+</body>
+</html>
