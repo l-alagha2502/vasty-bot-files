@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VASTY BOT — TERMS OF SERVICE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET & BASE ─────────────────────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --black:  #000000;
+      --green:  #00FF00;
+      --cyan:   #00FFFF;
+      --white:  #FFFFFF;
+      --border: 5px solid var(--green);
+      --font:   'Space Mono', 'Courier New', monospace;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--black);
+      color: var(--green);
+      font-family: var(--font);
+      font-size: 1rem;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── SCANLINE OVERLAY (Chroma texture) ───────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 0, 0.03) 2px,
+        rgba(0, 255, 0, 0.03) 4px
+      );
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── NAVIGATION ───────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--black);
+      border-bottom: var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-brand {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 1rem 0;
+      text-decoration: none;
+      border: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 1rem 1.4rem;
+      font-family: var(--font);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      color: var(--green);
+      border-left: 5px solid var(--green);
+      transition: background-color 0.1s, color 0.1s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background-color: var(--green);
+      color: var(--black);
+    }
+
+    /* ── HERO BANNER ──────────────────────────────────────────── */
+    .hero {
+      border-bottom: var(--border);
+      padding: 4rem 2rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: 'TOS';
+      position: absolute;
+      right: -0.1em;
+      bottom: -0.25em;
+      font-size: clamp(6rem, 20vw, 14rem);
+      font-weight: 700;
+      color: rgba(0, 255, 0, 0.05);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--black);
+      background-color: var(--cyan);
+      padding: 0.25rem 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.1;
+      letter-spacing: 0.05em;
+      color: var(--green);
+    }
+
+    .hero h1 span {
+      color: var(--cyan);
+    }
+
+    .hero-meta {
+      margin-top: 1.25rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      opacity: 0.8;
+    }
+
+    /* ── MAIN LAYOUT ──────────────────────────────────────────── */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem 6rem;
+    }
+
+    /* ── SECTION CARDS ────────────────────────────────────────── */
+    .section-card {
+      border: var(--border);
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .section-card::before {
+      content: attr(data-index);
+      position: absolute;
+      top: -1px;
+      right: -1px;
+      background-color: var(--green);
+      color: var(--black);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 0.2rem 0.6rem;
+      text-transform: uppercase;
+    }
+
+    .section-header {
+      background-color: var(--green);
+      color: var(--black);
+      padding: 0.85rem 1.5rem;
+      font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-bottom: 5px solid var(--black);
+    }
+
+    .section-body {
+      padding: 1.5rem;
+      color: var(--white);
+      font-size: 0.92rem;
+    }
+
+    .section-body p {
+      margin-bottom: 1rem;
+    }
+
+    .section-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── LISTS ────────────────────────────────────────────────── */
+    .section-body ul {
+      list-style: none;
+      margin: 0.75rem 0;
+      padding: 0;
+    }
+
+    .section-body ul li {
+      padding: 0.45rem 0 0.45rem 1.5rem;
+      position: relative;
+      border-bottom: 1px solid rgba(0, 255, 0, 0.15);
+    }
+
+    .section-body ul li:last-child {
+      border-bottom: none;
+    }
+
+    .section-body ul li::before {
+      content: '▶';
+      position: absolute;
+      left: 0;
+      color: var(--cyan);
+      font-size: 0.7rem;
+      top: 0.55rem;
+    }
+
+    /* ── HIGHLIGHT CALLOUT ────────────────────────────────────── */
+    .callout {
+      border: 5px solid var(--cyan);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      background-color: rgba(0, 255, 255, 0.05);
+      color: var(--cyan);
+      font-size: 0.88rem;
+    }
+
+    .callout strong {
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── FOOTER ───────────────────────────────────────────────── */
+    footer {
+      border-top: var(--border);
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(0, 255, 0, 0.5);
+    }
+
+    footer span strong {
+      color: var(--cyan);
+    }
+
+    /* ── BACK TO TOP ──────────────────────────────────────────── */
+    #back-to-top {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      border: 5px solid var(--cyan);
+      background-color: var(--black);
+      color: var(--cyan);
+      font-family: var(--font);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      transition: background-color 0.1s, color 0.1s;
+      cursor: pointer;
+    }
+
+    #back-to-top:hover {
+      background-color: var(--cyan);
+      color: var(--black);
+    }
+
+    /* ── CHROMA ACCENT LINE ───────────────────────────────────── */
+    .chroma-line {
+      height: 5px;
+      background: linear-gradient(90deg, var(--green) 0%, var(--cyan) 50%, var(--green) 100%);
+      margin-bottom: 0;
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      nav {
+        padding: 0 1rem;
+      }
+
+      .nav-brand {
+        font-size: 0.9rem;
+      }
+
+      .nav-links a {
+        padding: 1rem 1rem;
+        font-size: 0.75rem;
+      }
+
+      .hero {
+        padding: 2.5rem 1rem 2rem;
+      }
+
+      main {
+        padding: 2rem 1rem 4rem;
+      }
+
+      .section-header {
+        font-size: 0.9rem;
+      }
+
+      .section-body {
+        padding: 1rem;
+        font-size: 0.85rem;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body id="top">
+
+  <!-- CHROMA TOP ACCENT -->
+  <div class="chroma-line"></div>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a class="nav-brand" href="index.html">⚡ VASTY BOT</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Terms of Service</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <span class="hero-label">Legal Document</span>
+    <h1>Terms of<br /><span>Service</span></h1>
+    <p class="hero-meta">Last Updated: March 31, 2026 &nbsp;|&nbsp; Vasty Bot &nbsp;|&nbsp; Vast™</p>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <!-- SECTION 1 -->
+    <article class="section-card" data-index="§ 01">
+      <div class="section-header">1. Acceptance of Terms</div>
+      <div class="section-body">
+        <p>By adding Vasty Bot to your server or interacting with its commands, you agree to these Terms of Service.</p>
+        <div class="callout">
+          <strong>Important:</strong> If you do not agree, stop using the bot and remove it from your server immediately.
+        </div>
+      </div>
+    </article>
+
+    <!-- SECTION 2 -->
+    <article class="section-card" data-index="§ 02">
+      <div class="section-header">2. Description of Service</div>
+      <div class="section-body">
+        <p>Vasty Bot is a multi-purpose Discord utility providing economy (Sparks), leveling, moderation, and custom profile services (Vast Cards) for the Vast™ community.</p>
+      </div>
+    </article>
+
+    <!-- SECTION 3 -->
+    <article class="section-card" data-index="§ 03">
+      <div class="section-header">3. The Sparks Economy</div>
+      <div class="section-body">
+        <ul>
+          <li><strong>No Real Value:</strong> Sparks are a virtual currency with zero real-world monetary value. They cannot be traded for cash or off-platform assets.</li>
+          <li><strong>Abuse &amp; Exploits:</strong> Any attempt to "cap" or exploit the economy (e.g., macro-farming, bug abuse) will result in a permanent balance reset and a bot-wide ban.</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- SECTION 4 -->
+    <article class="section-card" data-index="§ 04">
+      <div class="section-header">4. Vast™ Card Customization</div>
+      <div class="section-body">
+        <p>Users purchasing a "Vast Card" must provide 14 points of specification. Vast™ reserves the right to refuse fulfillment of any order containing offensive, illegal, or NSFW content.</p>
+        <div class="callout">
+          <strong>No Refunds:</strong> No refunds are provided for Sparks once a customization order is submitted.
+        </div>
+      </div>
+    </article>
+
+    <!-- SECTION 5 -->
+    <article class="section-card" data-index="§ 05">
+      <div class="section-header">5. User Conduct</div>
+      <div class="section-body">
+        <p>You may not use Vasty Bot to:</p>
+        <ul>
+          <li>Bypass server-side moderation.</li>
+          <li>Spam commands to lag the bot or the host.</li>
+          <li>Harass others via the /vent or ticket systems.</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- SECTION 6 -->
+    <article class="section-card" data-index="§ 06">
+      <div class="section-header">6. Termination</div>
+      <div class="section-body">
+        <p>The Vast™ development team reserves the right to terminate access to the bot for any user or server for any reason, without prior notice.</p>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 <strong>Vast™</strong> — All rights reserved.</span>
+    <a href="#top" id="back-to-top">↑ Back to Top</a>
+  </footer>
+
+  <!-- CHROMA BOTTOM ACCENT -->
+  <div class="chroma-line"></div>
+
+</body>
+</html>
